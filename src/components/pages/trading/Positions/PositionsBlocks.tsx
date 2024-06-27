@@ -9,6 +9,8 @@ import { useSelector } from '@/store/store';
 import { PositionExtended } from '@/types';
 import { getArrowElement } from '@/utils';
 
+import NetValueTooltip from '../TradingInputs/NetValueTooltip';
+
 export default function PositionsBlocks({
   bodyClassName,
   connected,
@@ -132,12 +134,12 @@ export default function PositionsBlocks({
 
           <ul className="flex flex-col gap-2 p-4">
             <li className={columnStyle}>
-              <p className="opacity-50">Leverage</p>
-              <div className="flex-row gap-3">
+              <div className="flex w-full">
+                <div className="text-txtfade text-sm">Leverage</div>
                 <FormatNumber
                   nb={position.leverage}
                   format="number"
-                  className="text-right"
+                  className="ml-auto"
                   suffix="x"
                   isDecimalDimmed={false}
                 />
@@ -145,36 +147,43 @@ export default function PositionsBlocks({
             </li>
 
             <li className={columnStyle}>
-              <p className="opacity-50">Size</p>
+              <div className="flex w-full">
+                <div className="text-txtfade text-sm">Size</div>
 
-              <FormatNumber
-                nb={position.sizeUsd}
-                format="currency"
-                className="text-right"
-              />
+                <FormatNumber
+                  nb={position.sizeUsd}
+                  format="currency"
+                  className="text-right ml-auto"
+                />
+              </div>
             </li>
             <li className={columnStyle}>
-              <p className="opacity-50">Collateral</p>
-
-              <FormatNumber
-                nb={position.collateralUsd}
-                format="currency"
-                className="text-right"
-              />
+              <div className="flex w-full">
+                <div className="text-txtfade text-sm">Collateral</div>
+                <FormatNumber
+                  nb={position.collateralUsd}
+                  format="currency"
+                  className="ml-auto"
+                />
+              </div>
             </li>
             <li className={columnStyle}>
-              <p className="opacity-50">Net value</p>
-              <FormatNumber
-                nb={position.pnl}
-                format="currency"
-                className={`text-${
-                  position.pnl && position.pnl > 0 ? 'green' : 'red'
-                } text-right`}
-              />
+              <NetValueTooltip position={position}>
+                <div className="flex w-full">
+                  <div className="text-txtfade text-sm">Net value</div>
+                  <FormatNumber
+                    nb={position.pnl}
+                    format="currency"
+                    className={`text-${
+                      position.pnl && position.pnl > 0 ? 'green' : 'red'
+                    } ml-auto underline-dashed`}
+                  />
+                </div>
+              </NetValueTooltip>
             </li>
 
             <li className={columnStyle}>
-              <p className="opacity-50">Entry Price</p>
+              <p className="text-txtfade text-sm">Entry Price</p>
               <FormatNumber
                 nb={position.price}
                 format="currency"
@@ -183,7 +192,7 @@ export default function PositionsBlocks({
             </li>
 
             <li className={columnStyle}>
-              <p className="opacity-50">Mark Price</p>
+              <p className="text-txtfade text-sm">Mark Price</p>
 
               <FormatNumber
                 nb={tokenPrices[position.token.symbol]}
@@ -193,13 +202,14 @@ export default function PositionsBlocks({
             </li>
 
             <li className={columnStyle}>
-              <p className="opacity-50">Liquidation Price</p>
-
-              <FormatNumber
-                nb={position.liquidationPrice}
-                format="currency"
-                className="text-right"
-              />
+              <div className="flex w-full">
+                <div className="text-txtfade text-sm">Liquidation Price</div>
+                <FormatNumber
+                  nb={position.liquidationPrice}
+                  format="currency"
+                  className="ml-auto"
+                />
+              </div>
             </li>
           </ul>
         </div>
