@@ -6,12 +6,10 @@ import StyledSubSubContainer from '@/components/common/StyledSubSubContainer/Sty
 export default function Block({
   columnsTitles,
   className,
-  rowTitleClassName,
   data,
 }: {
   className?: string;
   columnsTitles?: ReactNode[];
-  rowTitleClassName?: string;
   data: (
     | {
         rowTitle: ReactNode;
@@ -47,9 +45,7 @@ export default function Block({
                   className="flex flex-row justify-between items-center"
                   key={'li-' + j}
                 >
-                  {columnsTitles?.[j] && (
-                    <p className={rowTitleClassName}> {columnsTitles[j]} </p>
-                  )}
+                  {columnsTitles?.[j] && <p> {columnsTitles[j]} </p>}
                   {value}
                 </li>
               ));

@@ -12,7 +12,6 @@ import { useSelector } from '@/store/store';
 import { PositionExtended } from '@/types';
 import { getArrowElement } from '@/utils';
 
-import solLogo from '../../../../../public/images/sol.svg';
 import NetValueTooltip from '../TradingInputs/NetValueTooltip';
 
 export default function PositionsArray({
@@ -131,11 +130,7 @@ export default function PositionsArray({
                     className="hidden md:block lg:hidden xl:block"
                     height={28}
                     width={28}
-                    src={
-                      position.token.symbol !== 'JITOSOL'
-                        ? position.token.image
-                        : solLogo
-                    }
+                    src={position.token.image}
                     alt={`${position.token.symbol} logo`}
                   />
                   <table className="flex flex-col ml-2 text-xs md:text-sm text-center h-10">
@@ -145,24 +140,16 @@ export default function PositionsArray({
                           <div className="grow flex h-full items-center justify-start pt-0.5 mt-[0.2em]">
                             {window.location.pathname !== '/trade' ? (
                               <Link
-                                href={`/trade?pair=USDC_${
-                                  position.token.symbol !== 'JITOSOL'
-                                    ? position.token.symbol
-                                    : 'SOL'
-                                }&action=${position.side}`}
+                                href={`/trade?pair=USDC_${position.token.symbol}&action=${position.side}`}
                                 target=""
                               >
                                 <span className="font-boldy underline text-xs md:text-sm">
-                                  {position.token.symbol != 'JITOSOL'
-                                    ? position.token.symbol
-                                    : 'SOL'}
+                                  {position.token.symbol}
                                 </span>
                               </Link>
                             ) : (
                               <span className="font-boldy text-xs md:text-sm">
-                                {position.token.symbol !== 'JITOSOL'
-                                  ? position.token.symbol
-                                  : 'SOL'}
+                                {position.token.symbol}
                               </span>
                             )}
                             <span
@@ -304,13 +291,7 @@ export default function PositionsArray({
 
                     <div className="flex">
                       <FormatNumber
-                        nb={
-                          tokenPrices[
-                            position.token.symbol !== 'JITOSOL'
-                              ? position.token.symbol
-                              : 'SOL'
-                          ]
-                        }
+                        nb={tokenPrices[position.token.symbol]}
                         format="currency"
                         className="text-xs text-txtfade"
                         minimumFractionDigits={2}
@@ -329,13 +310,7 @@ export default function PositionsArray({
                     <span className="text-xs text-txtfade ml-1 mr-1">/</span>
 
                     <FormatNumber
-                      nb={
-                        tokenPrices[
-                          position.token.symbol !== 'JITOSOL'
-                            ? position.token.symbol
-                            : 'SOL'
-                        ]
-                      }
+                      nb={tokenPrices[position.token.symbol]}
                       format="currency"
                       className="text-xs text-txtfade"
                       minimumFractionDigits={2}
@@ -382,29 +357,15 @@ export default function PositionsArray({
                 className="flex-col bg-red justify-center items-center text-center align-middle text-xs opacity-70"
               >
                 {position.side === 'long' &&
-                tokenPrices[
-                  position.token.symbol !== 'JITOSOL'
-                    ? position.token.symbol
-                    : 'SOL'
-                ] &&
-                (tokenPrices[
-                  position.token.symbol !== 'JITOSOL'
-                    ? position.token.symbol
-                    : 'SOL'
-                ] ?? 0) < (position.liquidationPrice ?? 0)
+                tokenPrices[position.token.symbol] &&
+                (tokenPrices[position.token.symbol] ?? 0) <
+                  (position.liquidationPrice ?? 0)
                   ? generateLiquidationBlock()
                   : null}
                 {position.side === 'short' &&
-                tokenPrices[
-                  position.token.symbol !== 'JITOSOL'
-                    ? position.token.symbol
-                    : 'SOL'
-                ] &&
-                (tokenPrices[
-                  position.token.symbol !== 'JITOSOL'
-                    ? position.token.symbol
-                    : 'SOL'
-                ] ?? 0) > (position.liquidationPrice ?? 0)
+                tokenPrices[position.token.symbol] &&
+                (tokenPrices[position.token.symbol] ?? 0) >
+                  (position.liquidationPrice ?? 0)
                   ? generateLiquidationBlock()
                   : null}
               </td>
