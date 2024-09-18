@@ -280,12 +280,12 @@ function AppComponent({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeRpc.name]);
 
-  useEffect(() => {
-    const isGenesis = process.env.NEXT_PUBLIC_IS_GENESIS === 'true';
-    if (window.location.pathname !== '/genesis' && isGenesis) {
-      router.push('/genesis');
-    }
-  }, [window.location.pathname]);
+  // useEffect(() => {
+  //   const isGenesis = process.env.NEXT_PUBLIC_IS_GENESIS === 'true';
+  //   if (window.location.pathname !== '/genesis' && isGenesis) {
+  //     router.push('/genesis');
+  //   }
+  // }, [window.location.pathname]);
 
   return (
     <>
