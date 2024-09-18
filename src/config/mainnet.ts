@@ -138,6 +138,10 @@ export default class MainnetConfiguration implements IConfiguration {
     })(),
   };
 
+  public readonly adrenaProgramId: PublicKey = new PublicKey(
+    '13gDzEXCdocbj8iAiqrScGo47NiSuYENGsRqi3SEAwet',
+  );
+
   public readonly mainPool: PublicKey = new PublicKey(
     '4bQRutgDJs6vuh6ZcWaPVXiQaBzbHketjbCDjL4oRN34',
   );

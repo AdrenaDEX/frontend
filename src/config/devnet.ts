@@ -91,7 +91,7 @@ export default class DevnetConfiguration implements IConfiguration {
     'rec5EKMGg6MxZYaMdyBfgwp4d5rB9T1VQH5pJv5LtFJ',
   );
 
-  public readonly governanceRealmName = 'AdrenaDaoTestingA';
+  public readonly governanceRealmName = 'AdrenaDaoTestingG';
 
   public readonly rpcOptions: RpcOption[] = this.devMode
     ? [
@@ -143,6 +143,6 @@ export default class DevnetConfiguration implements IConfiguration {
   };
 
   public readonly mainPool: PublicKey = new PublicKey(
-    '9ZR8hzuQiHA1Ye7mbq42dfXV4k4pQwGBPDmTbtA5kWBH',
+    '3R8cypePDQHUP9ZSreAfdFE34TdHahaCUAomPxZyN8A4',
   );
 }
