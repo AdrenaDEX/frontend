@@ -14,7 +14,6 @@ import MenuItem from '../common/Menu/MenuItem';
 import MenuItems from '../common/Menu/MenuItems';
 import MenuSeparator from '../common/Menu/MenuSeparator';
 import Settings from '../Settings/Settings';
-import WalletAdapter from '../WalletAdapter/WalletAdapter';
 
 export default function Header({
   userProfile,
@@ -104,7 +103,11 @@ export default function Header({
             className="h-7"
           />
         </Link>
-        <WalletAdapter userProfile={userProfile} className="ml-2" />
+
+        <w3m-button />
+
+        {/* <WalletAdapter userProfile={userProfile} className="ml-2" /> */}
+
         <Settings
           activeRpc={activeRpc}
           rpcInfos={rpcInfos}
