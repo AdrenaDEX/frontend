@@ -65,6 +65,11 @@ export default function ALPPriceChart() {
             day: 'numeric',
             month: 'numeric',
           });
+        } else {
+          return new Date(time).toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+          });
         }
       });
 

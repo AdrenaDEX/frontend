@@ -84,11 +84,12 @@ export default function UnrealizedPnlChart() {
             day: 'numeric',
             month: 'numeric',
           });
-        } else
+        } else {
           return new Date(time).toLocaleTimeString('en-US', {
             hour: 'numeric',
             minute: 'numeric',
           });
+        }
       });
 
       // Each custody keeps an utilization array
